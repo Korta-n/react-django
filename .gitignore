@@ -1,1 +1,6 @@
-/static
+static
+envs
+
+# *.sqlite3
+# *.pyc
+
