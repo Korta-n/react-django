@@ -1,0 +1,92 @@
+.navBar {
+  margin: 0;
+  width: 100%;
+  background-color: #2ec4b6;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 15%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .navBar {
+    padding: 0 5%;
+  }
+}
+
+@media (min-width: 992px) {
+  .navBar {
+    padding: 0 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navBar {
+    padding: 0 15%;
+  }
+}
+
+.navBar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navBar a:focus,
+.navBar a:active {
+  outline: none;
+}
+
+.navLogo {
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Inconsolata', monospace;
+  font-size: 48px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navLogo span {
+  color: #011627;
+}
+
+.navLogo:hover {
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.linksList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.linksList li {
+  color: #fff;
+  font-size: 24px;
+  transition: 0.2s;
+  box-sizing: border-box;
+  margin: 5px 10px;
+  cursor: pointer;
+}
+
+.linksList li:hover {
+  transform: translateY(-3px);
+  color: #011627;
+  transition: 0.2s;
+}
+
+.linksList li:nth-child(1) {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #011627;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  pointer-events: none;
+}
