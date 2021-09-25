@@ -1,0 +1,12 @@
+#!bash
+
+cd ./mainapp-ui
+npm install
+
+env_dir=envs
+
+python3 -m venv $env_dir
+source $env_dir/bin/activate
+pip install django
+
+

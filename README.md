@@ -1,7 +1,7 @@
-# VidHelpdesk
+#
 
-* [Development Workflow](docs/development-workflow.md)
-* [Tech stack](docs/tech-stack.md)
+- [Development Workflow](docs/development-workflow.md)
+- [Tech stack](docs/tech-stack.md)
 
 ## Repo Structure
 
@@ -13,42 +13,52 @@
 - **website** - an index page that is served on localhost:3000/, it includes demo page for widget testing
 - **widget** - code of the embeddable chat widget
 
+## Setup
+
+1. Run `bin/setup`
+2. Run `bin/start/server` to run server in localhost
+3. Open [ReactApp:127.0.0.1](http://127.0.0.1:8000/)
+
 ## Development
 
 1. Run `bin/setup`.
-2. Run `docker-compose up`.
-3. Open [localhost:3000](http://localhost:3000).
-
-See [ingress.conf](config/development/ingress.conf) to learn how we route requests to services.
-
-If you're using Windows, see [docs/devenvironment/windows.md](docs/devenvironment/windows.md) for more details.
-
-Check the [docs/graphql/basic-workflow.md](docs/graphql/basic-workflow.md) to get started making GraphQL-related changes on both server and client sides.
-
-### Running Application
-
-`bin/update` installs dependencies and runs database migrations. It makes sense to run it every time after you pulled changes from remote repository.
-
-`docker-compose up` starts all the services, required by the app. When services are running, open [localhost:3000](http://localhost:3000).
-
-Use [binstubs](#binstubs) for running commands inside containers (e.g. installing dependencies).
-
-`docker-compose restart api` restarts single service. It is useful when you changed configuration file.
-
-If you changed `docker-compose.yml` it makes sense to stop all the services and use `docker-compose up` to start them again.
-
-`bin/test` runs tests for all the apps. You can use `bin/backoffice/test` for running tests for backoffice service separately.
-
-`bin/lint` runs linters for all the apps.
+2. Run `bin/start/dev`.
+3. Look through the source code. Enjoy.
 
 ### binstubs
 
-See [bin/ folder](bin) for available binstubs. Some of them:
+This project includes my own binstubs so fell free to use them ;)
 
-- `bin/api/r` or `bin/backoffice/r` runs any commang in a newly created container with mounted volumes for corresponding service. E.g. `bin/backoffice/r npm install --save dreact` or `bin/api/r /bin/bash`.
-- `bin/test` runs tests for all services.
-- `bin/lint` runs linters for all services.
+See [bin/ folder](bin) for available binstubs.
 
+### Running Application
+
+<!-- `bin/build` installs dependencies and runs database migrations. It makes sense to run it every time after you pulled changes from remote repository. -->
+
+To make changes in React App:
+
+1. `bin/build` create build out from `mainapp-ui` react app. It makes sense to run it every timr after you made changes in `./mainapp-ui`
+
+To make changes in Django:
+
+1. Be sure to `Ctrl+C` old connection.
+2. Run `bin/start/server` to run server once again.
+
+<!-- `docker-compose up` starts all the services, required by the app. When services are running, open [localhost:3000](http://localhost:3000). -->
+
+<!-- Use [binstubs](#binstubs) for running commands inside containers (e.g. installing dependencies). -->
+
+<!-- `docker-compose restart api` restarts single service. It is useful when you changed configuration file. -->
+
+<!-- If you changed `docker-compose.yml` it makes sense to stop all the services and use `docker-compose up` to start them again. -->
+
+<!-- `bin/test` runs tests for all the apps. You can use `bin/backoffice/test` for running tests for backoffice service separately. -->
+
+<!-- `bin/lint` runs linters for all the apps. -->
+
+<!-- - `bin/api/r` or `bin/backoffice/r` runs any commang in a newly created container with mounted volumes for corresponding service. E.g. `bin/backoffice/r npm install --save dreact` or `bin/api/r /bin/bash`. -->
+<!-- - `bin/test` runs tests for all services. -->
+<!--
 ### devcontainer
 
 If you use vscode for development you might enjoy running `bin/code` which opens project directory in [dev container](https://code.visualstudio.com/docs/remote/containers).
@@ -57,24 +67,26 @@ It is possible to run all the bin/ scripts from devcontainer vscode terminal. vs
 
 You may use any other editor or IDE but they most likely will require some extra configuration since all the dependencies are installed in container volumes for perfomance reasons. Use docker-compose.override.yml if you want to change services settings locally.
 
-Example of docker-compose.override.yml file:
-```yaml
+Example of docker-compose.override.yml file: -->
+
+<!-- ```yaml
 services:
   devcontainer:
     volumes:
       - ~/.zshrc.local:/home/dev/.zshrc.local
       - ~/.gitconfig.local:/home/dev/.gitconfig.local
       - ~/.ssh/config:/home/dev/.ssh/config
-```
+``` -->
 
-If you mount `~/.zshrc.local` to the devcontainer, you might need to require `~/.zshrc.devcontainer` from it:
-```
+<!-- If you mount `~/.zshrc.local` to the devcontainer, you might need to require `~/.zshrc.devcontainer` from it: -->
+
+<!-- ```
 [[ -f ~/.zshrc.devcontainer ]] && source ~/.zshrc.devcontainer
-```
+``` -->
 
-Please make sure you don't have something very host-specific in your `~/.zshrc.local` (e.g. starting `ssh-agent`) or add conditions so those commands aren't executed in the devcontainer.
+<!-- Please make sure you don't have something very host-specific in your `~/.zshrc.local` (e.g. starting `ssh-agent`) or add conditions so those commands aren't executed in the devcontainer. -->
 
-### Debugging
+<!-- ### Debugging
 
 #### Debugging api in devcontainer
 
@@ -103,12 +115,12 @@ Debug separate test files in vscode:
 
 It is possible to do the same via Chrome DevTools, however it would require a modification of `bin/backoffice/test-debug` to expose debugger server port (9229) to the host.
 
-
 ## Deploy and K8s Cluster
 
 ### Setup
 
 Setup the connections to the AWS console and kubernetes cluster on your computer:
+
 ```
 bin/cluster/setup
 ```
@@ -134,6 +146,7 @@ When we make calls to the AWS API we don't use our generated API key, instead, w
 ### Deploy
 
 The code pushed to the "main" branch will be deployed automatically. If you want to trigger deployment from your computer, you can use `bin/deploy` script:
+
 ```
 VERSION=v3c2f351-local bin/deploy
 ```
@@ -179,4 +192,4 @@ $ kubectl exec -it <pod-id> -c api-init-container -- /bin/bash -l
 
 # Delete pod (it will create a new one)
 $ kubectl delete pod <pod-id>
-```
+``` -->

@@ -1,0 +1,12 @@
+#!bash
+
+set -e
+
+. bin/_helpers
+
+if has_py; then 
+  start_server
+  code .
+else
+  echo "Error: Python isn't installed, please install python on the source website(https://www.python.org/downloads/)"
+fi
