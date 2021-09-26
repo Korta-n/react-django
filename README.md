@@ -10,6 +10,8 @@
 
 ## Setup
 
+Be sure to execute commands in zsh (Binstubs not optimised for Windows. I've tried...)
+
 1. Run `bin/setup`
 2. Run `bin/start/server` to run server in localhost
 3. Open [React App : 127.0.0.1:8000](http://127.0.0.1:8000/)
