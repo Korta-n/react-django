@@ -4,6 +4,6 @@ set -e
 
 . bin/_helpers
  
-start_server
+start_app
 
 code .
